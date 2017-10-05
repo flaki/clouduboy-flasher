@@ -1,0 +1,22 @@
+{
+  "name": "clouduboy-flasher",
+  "version": "0.1.0",
+  "description": "Add-on for flashing Arduboy apps from the Clouduboy IDE",
+  "main": "app/app.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "build": "electron-packager app ClouduboyFlasher --platform=darwin --arch=x64 --version=0.36.9 --icon=build/Icon.icns -out=dist",
+    "pack": "build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron app.js"
+  },
+  "author": "Flaki (https://twitter.com/slsoftworks)",
+  "license": "MIT",
+  "repository": "flaki/clouduboy-flasher",
+  "devDependencies": {
+    "electron-builder": "2.8.3",
+    "electron-packager": "5.2.1",
+    "electron-prebuilt": "0.36.9",
+    "electron-rebuild": "^1.1.3"
+  }
+}
