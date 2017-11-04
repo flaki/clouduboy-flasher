@@ -1,4 +1,4 @@
 node_modules
-.DS_Store
+out
 npm-debug.log
-.pioenvs
+devlog*.md
