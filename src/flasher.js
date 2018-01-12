@@ -15,18 +15,23 @@ function findArduboy() {
 
       // Find (first) Arduboy device
       for (let p of ports) {
+        const vId = parseInt(p.vendorId, 16)
+        const pId = parseInt(p.productId, 16)
+
         // Bootloader mode
-        if (p.vendorId === '0x2341' && p.productId === '0x8036') {
-          return resolve(p.comName);
+        if (vId === 0x2341 && pId === 0x8036) {
+          console.log(`Found device in Bootloader mode @ ${p.comName}.`)
+          return resolve(p.comName)
         }
         // Recovery mode
-        if (p.vendorId === '0x2341' && p.productId === '0x0036') {
-          return resolve(p.comName);
+        if (vId === 0x2341 && pId === 0x0036) {
+          console.log(`Found device in Recovery mode @ ${p.comName}.`)
+          return resolve(p.comName)
         }
 
-        // Plug & Play ID (Windows)
-        console.log(p.pnpId)
-        if (p.pnpId.match(/VID_2341&PID_(0|8)036/)) {
+        // Plug & Play ID (Windows/Linux)
+        if (typeof p.pnpId === 'string' && p.pnpId.match(/VID_2341&PID_(0|8)036/)) {
+          console.log(`Found device via Plug & Play @ ${p.comName}.`)
           return resolve(p.comName);
         }
       }
@@ -42,6 +47,7 @@ function flashArduboy(hex, port) {
   return hexToTemp(hex).then(hexfile => {
     const avrgirl = new Avrgirl({
       board: 'arduboy',
+      port: port,
       debug: true
     });
 
