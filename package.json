@@ -53,7 +53,7 @@
     "menubar": "^4.1.2",
     "node-fetch": "^1.3.3",
     "tmp": "^0.0.31",
-    "avrgirl-arduino": "git@github.com:flaki/avrgirl-arduino.git#mac-flash",
+    "avrgirl-arduino": "git+https://git@github.com/flaki/avrgirl-arduino.git",
     "electron-compile": "^6.4.2",
     "electron-squirrel-startup": "^1.0.0"
   },
