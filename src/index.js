@@ -195,7 +195,7 @@ mb.on('ready', function () {
 
   // Flashing requests
   ipcMain.on('flash', function(e, flash) {
-    console.log(flash.data);
+    //console.log(flash.data);
     updateState('flashing', { msg: 'Uploading...', msgt: 'progress' })
       .then( flashBuild.bind(null, flash.data) )
       .then( function() {
